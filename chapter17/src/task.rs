@@ -2,7 +2,7 @@ use std::time::Duration;
 
 pub fn task_spawn() {
     trpl::block_on(async {
-        let _handle = trpl::spawn_task(async {
+        let handle = trpl::spawn_task(async {
             for i in 1..10 {
                 println!("task 1: {i}");
                 trpl::sleep(Duration::from_millis(5)).await;
@@ -13,7 +13,7 @@ pub fn task_spawn() {
             println!("task 2: {i}");
             trpl::sleep(Duration::from_millis(5)).await;
         }
-        // handle.await.unwrap();
+        handle.await.unwrap();
     });
 }
 
@@ -21,7 +21,7 @@ pub fn task_spawn() {
 pub fn task_async() {
     trpl::block_on(async{
         let fut1 = async {
-            for i in 1..10 {
+            for i in 1..5 {
                 println!("task1: {i}");
                 trpl::sleep(Duration::from_millis(5)).await;
             };
@@ -33,6 +33,7 @@ pub fn task_async() {
                 trpl::sleep(Duration::from_millis(5)).await;
             };
         };
+        // fut2.await;
 
         trpl::join(fut1, fut2).await;
     });
