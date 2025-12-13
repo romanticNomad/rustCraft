@@ -9,5 +9,6 @@ fn main() {
     // scraper::single_url();
     // scraper::url_race();
 
-    task::task_spawn();
+    // task::task_spawn();
+    task::task_async();
 }
