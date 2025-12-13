@@ -25,3 +25,7 @@ That is exactly what Rust’s async (short for asynchronous) abstraction gives u
 - How to use Rust’s async and await syntax and execute asynchronous functions with a runtime
 - How to use the async model to solve some of the same challenges we looked at in Chapter 16
 - How multithreading and async provide complementary solutions that you can combine in many cases.
+
+## Personal note:
+- **Threads** and OS managed -> truly run in parellel on multiple CPU cores allocated by OS.
+- **Async** is Rust managed -> impliments as state machines *(futures)* run on seperate *runtime* in rust. 
