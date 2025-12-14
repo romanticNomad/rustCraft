@@ -29,6 +29,7 @@ fn main() {
     // controlflow::await_nosleep();
     // controlflow::await_yield();
 
-    timeout::timeout_test();
+    // timeout::timeout_test();
+    timeout::test();
 
 }

@@ -22,3 +22,21 @@ pub fn timeout_test() {
         };
     });
 }
+
+pub fn test() {
+    trpl::block_on(async {
+        let set1 = async {
+            // trpl::sleep(Duration::from_millis(300)).await;
+            trpl::yield_now().await;
+            println!("set1 finish");
+        };
+
+        let set2 = async {
+            // trpl::sleep(Duration::from_millis(400)).await;
+            trpl::yield_now().await;
+            println!("set2 finish");
+        };
+
+        trpl::select(set1, set2).await;
+    })
+}
