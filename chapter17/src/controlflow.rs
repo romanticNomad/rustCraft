@@ -5,24 +5,48 @@ fn halt(msg: &str, ms: u64) {
     println!("{msg} halted for {ms} ms");
 }
 
-pub fn concept() {
+pub fn await0() {
     trpl::block_on(async {
         let a = async {
             println!("a startes here");
             halt("a", 100);
             halt("a", 120); // these timstamps will not let execution of b start immidiatly
-            trpl::sleep(Duration::from_millis(200)).await;
+            // trpl::sleep(Duration::from_millis(200)).await;
             println!("a stops here");
         };
 
         let b = async {
             println!("b starts here");
             halt("b", 130);
-            halt("c", 170); // these timestamps will block the execution of 'a'.
+            halt("b", 170); // these timestamps will block the execution of 'a'.
             trpl::sleep(Duration::from_millis(200)).await;
             println!("b stops here");
         };
 
-        trpl::select(a, b).await; // select whichevers is working currently
+        trpl::select(a, b).await; // we don't use join but select to see runtime control is transfered
+    })
+}
+
+pub fn await1() {
+    trpl::block_on(async {
+        let a = async {
+            println!("a startes here");
+            halt("a", 100);
+            trpl::sleep(Duration::from_millis(1)).await; // manually passing the conctrol to runtime which switches it to b
+            halt("a", 120);
+            trpl::sleep(Duration::from_millis(1)).await;
+            println!("a stops here");
+        };
+
+        let b = async {
+            println!("b starts here");
+            halt("b", 130);
+            trpl::sleep(Duration::from_millis(1)).await;
+            halt("b", 170);
+            trpl::sleep(Duration::from_millis(1)).await;
+            println!("b stops here");
+        };
+
+        trpl::select(a, b).await; // we don't use join but select to see runtime control is transfered
     })
 }
