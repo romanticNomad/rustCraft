@@ -22,7 +22,8 @@ fn main() {
     // channel::messege();
     // channel::multi_messege();
 
-    // controlflow::await0();
-    controlflow::await1();
+    // controlflow::await_sleep();
+    // controlflow::await_nosleep();
+    controlflow::await_yield();
 
 }
