@@ -15,5 +15,6 @@ fn main() {
     // task::task_spawn();
     // task::task_async();
 
-    channel::test_channel();
+    // channel::test_channel();
+    channel::messege();
 }
