@@ -13,6 +13,9 @@ mod controlflow;
 #[allow(dead_code)]
 mod timeout;
 
+#[allow(dead_code)]
+mod purgatory;
+
 
 fn main() {
     // scraper::single_url();
@@ -30,6 +33,8 @@ fn main() {
     // controlflow::await_yield();
 
     // timeout::timeout_test();
-    timeout::test();
+    // timeout::test();
+
+    purgatory::hybrid();
 
 }
