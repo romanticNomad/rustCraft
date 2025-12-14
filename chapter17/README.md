@@ -29,3 +29,10 @@ That is exactly what Rust’s async (short for asynchronous) abstraction gives u
 ## Personal note:
 - **Threads** and OS managed -> truly run in parellel on multiple CPU cores allocated by OS.
 - **Async** is Rust managed -> impliments as state machines *(futures)* run on seperate *runtime* in rust. 
+
+#
+When thinking about which method to use when, consider these rules of thumb:
+
+1. If the work is very *parallelizable* (that is, CPU-bound), such as processing a bunch of data where each part can be processed separately, threads are a better choice.
+2. If the work is very *concurrent* (that is, I/O-bound), such as handling messages from a bunch of different sources that may come in at different intervals or different rates, async is a better choice.
+#
