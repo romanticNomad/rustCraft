@@ -10,6 +10,9 @@ mod channel;
 #[allow(dead_code)]
 mod controlflow;
 
+#[allow(dead_code)]
+mod timeout;
+
 
 fn main() {
     // scraper::single_url();
@@ -24,6 +27,8 @@ fn main() {
 
     // controlflow::await_sleep();
     // controlflow::await_nosleep();
-    controlflow::await_yield();
+    // controlflow::await_yield();
+
+    timeout::timeout_test();
 
 }
