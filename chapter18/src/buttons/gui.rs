@@ -3,7 +3,7 @@ pub trait Draw {
     fn draw(&self);
 }
 
-struct Screen {
+pub struct Screen {
     // we would want the users to manage their own components
     pub components: Vec<Box<dyn Draw>> // creating the trai object {vector defined by trait not by type}
 }
