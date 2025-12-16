@@ -2,6 +2,9 @@
 mod average;
 use average::AvgCollection;
 
+#[allow(dead_code)]
+mod gui;
+
 fn main() {
     let mut data1 = AvgCollection::new(vec![5,78,1,2,9]);
     dbg!(&data1);
